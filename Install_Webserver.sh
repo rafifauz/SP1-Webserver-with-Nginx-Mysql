@@ -45,7 +45,7 @@ sudo unlink /etc/nginx/sites-enabled/default
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web_baru && sudo git clone git@github.com:rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv sosial-media/* ./ && rm Install_Webserver.sh
+cd /var/www/web_baru && sudo git clone rafifauz/SP1-Webserver-with-Nginx-Mysql && sudo mv sosial-media/* ./ && rm Install_Webserver.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t
