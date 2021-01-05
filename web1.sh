@@ -66,7 +66,7 @@ sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web/ && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv SP1-Webserver-with-Nginx-Mysql/sosial-media-master/* ./ #&& rm ./SP1-Webserver-with-Nginx-Mysql/*.sh
+cd /var/www/web/ && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv SP1-Webserver-with-Nginx-Mysql/sosial-media-master/* ./ && sudo rm ./SP1-Webserver-with-Nginx-Mysql/*.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t

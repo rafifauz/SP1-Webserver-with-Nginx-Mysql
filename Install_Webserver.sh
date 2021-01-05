@@ -45,7 +45,7 @@ sudo unlink /etc/nginx/sites-enabled/default
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web_baru && sudo git clone https://github.com/sdcilsy/sosial-media.git && sudo mv sosial-media/* ./
+cd /var/www/web_baru && sudo git clone https://github.com/sdcilsy/sosial-media.git && sudo mv sosial-media/* ./ && sudo rm ./SP1-Webserver-with-Nginx-Mysql/*.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t
