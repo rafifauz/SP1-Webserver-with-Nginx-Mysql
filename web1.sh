@@ -11,9 +11,9 @@ sudo chown -R $USER:$USER /var/www/web
 echo "----------------Setting Nginx---------------"
 sudo tee /etc/nginx/sites-available/web1 <<EOL
 server {
-	listen 80;
+	listen 81;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name \$1;
+	server_name \$1/;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web_baru;
 	
@@ -36,7 +36,7 @@ server {
 EOL
 sudo tee /etc/nginx/sites-available/web2 <<EOL
 server {
-	listen 80;
+	listen 82;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
 	server_name \$1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
@@ -59,14 +59,14 @@ server {
 	}
 }
 EOL
+sudo unlink /etc/nginx/sites-enabled/*
 sudo ln -s /etc/nginx/sites-available/web1 /etc/nginx/sites-enabled
 sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled
-sudo unlink /etc/nginx/sites-enabled/*
 
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web/SP1-Webserver-with-Nginx-Mysql && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql && sudo mv sosial-media/* ./ && rm *.sh
+cd /var/www/web/ && sudo git clone https://github.com/sdcilsy/sosial-media.git && sudo mv sosial-media/* ./ && rm *.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t
@@ -80,3 +80,8 @@ CREATE USER IF NOT EXISTS 'devopscilsy'@'localhost' IDENTIFIED BY '1234567890';
 GRANT ALL PRIVILEGES ON * . * TO 'devopscilsy'@'localhost';
 FLUSH PRIVILEGES;
 EOF
+echo "----------------Ambil data dari DUMP.sql---------------"
+sudo mysql -u devopscilsy -p dbsosmed < /var/www/web_baru/dump.sql
+
+echo "----Cek apakah server_name sama dengan IP ini ----"
+dig +short myip.opendns.com @resolver1.opendns.com
