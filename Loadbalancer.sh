@@ -17,10 +17,6 @@ server {
 	#URL pengaksesan (bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu)
 	server_name \$1;
 
-	
-	# Add index.php to the list if you are using PHP
-	index index.php index.html index.htm ;
-
 	location / {
 	    proxy_pass http://loadbalancer;
 	}
@@ -32,4 +28,4 @@ sudo nginx -t
 #setelah update data harus dicek dengan restart nginx-t dulu sebelum restart nginx
 sudo systemctl restart nginx
 echo "----Cek apakah server_name sama dengan IP ini ----"
-dig +short myip.opendns.com @resolver1.opendns.com
+dig +short myip.opendns.com @resolver1.opendns.com 

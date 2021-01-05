@@ -4,7 +4,7 @@ echo "Start configuring Web1"
 sudo apt update
 sudo apt-get install -y nginx php-mysqli mysql-server php-fpm git unzip
 
-1=$(dig +short myip.opendns.com @resolver1.opendns.com)
+1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
 sudo mkdir /var/www/web
 sudo chown -R $USER:$USER /var/www/web
 
@@ -66,7 +66,7 @@ sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web/ && sudo git clone https://github.com/sdcilsy/sosial-media.git && sudo mv sosial-media/* ./ && rm *.sh
+cd /var/www/web/ && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv SP1-Webserver-with-Nginx-Mysql/sosial-media/* ./ && rm *.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t
