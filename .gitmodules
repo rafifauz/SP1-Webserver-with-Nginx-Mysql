@@ -1,0 +1,3 @@
+[submodule "SP1-Webserver-with-Nginx-Mysql"]
+	path = SP1-Webserver-with-Nginx-Mysql
+	url = https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git
