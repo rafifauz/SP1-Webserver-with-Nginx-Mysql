@@ -13,9 +13,9 @@ sudo tee /etc/nginx/sites-available/web1 <<EOL
 server {
 	listen 81;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name \$1/;
+	server_name \$1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
-	root /var/www/web_baru;
+	root /var/www/web;
 	
 	# Add index.php to the list if you are using PHP
 	index index.php index.html index.htm ;
@@ -40,7 +40,7 @@ server {
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
 	server_name \$1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
-	root /var/www/web_baru;
+	root /var/www/web;
 	
 	# Add index.php to the list if you are using PHP
 	index index.php index.html index.htm ;
@@ -66,7 +66,7 @@ sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enabled
 
 echo "----------------Template WEB---------------"
 
-cd /var/www/web/ && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv SP1-Webserver-with-Nginx-Mysql/sosial-media/* ./ && rm *.sh
+cd /var/www/web/ && sudo git clone https://github.com/rafifauz/SP1-Webserver-with-Nginx-Mysql.git && sudo mv SP1-Webserver-with-Nginx-Mysql/sosial-media-master/* ./ && sudo rm ./SP1-Webserver-with-Nginx-Mysql/*.sh
 
 echo "----------------Review & Start Nginx---------------"
 sudo nginx -t
@@ -81,7 +81,7 @@ GRANT ALL PRIVILEGES ON * . * TO 'devopscilsy'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 echo "----------------Ambil data dari DUMP.sql---------------"
-sudo mysql -u devopscilsy -p dbsosmed < /var/www/web_baru/dump.sql
+sudo mysql -u devopscilsy -p dbsosmed < /var/www/web/dump.sql
 
 echo "----Cek apakah server_name sama dengan IP ini ----"
 dig +short myip.opendns.com @resolver1.opendns.com
