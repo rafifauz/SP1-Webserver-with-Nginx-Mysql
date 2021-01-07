@@ -9,7 +9,7 @@ sudo apt-get install -y php-mysqli
 sudo apt-get install unzip
 
 
-1=$(dig +short myip.opendns.com @resolver1.opendns.com)
+var1=$(dig +short myip.opendns.com @resolver1.opendns.com)
 sudo mkdir /var/www/web_baru
 sudo chown -R $USER:$USER /var/www/web_baru
 
@@ -18,7 +18,7 @@ sudo tee /etc/nginx/sites-available/web_baru <<EOL
 server {
 	listen 80;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name \$1;
+	server_name $var1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web_baru;
 	

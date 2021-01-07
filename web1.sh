@@ -4,7 +4,7 @@ echo "Start configuring Web1"
 sudo apt update
 sudo apt-get install -y nginx php-mysqli mysql-server php-fpm git unzip
 
-1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
+var1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
 sudo mkdir /var/www/web
 sudo chown -R $USER:$USER /var/www/web
 
@@ -13,7 +13,7 @@ sudo tee /etc/nginx/sites-available/web1 <<EOL
 server {
 	listen 81;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name \$1;
+	server_name $var1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web;
 	
@@ -38,7 +38,7 @@ sudo tee /etc/nginx/sites-available/web2 <<EOL
 server {
 	listen 82;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name \$1;
+	server_name $var1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web;
 	
