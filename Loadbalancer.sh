@@ -5,7 +5,7 @@
 #Server3= 54.179.243.147	(Mysql >> Database)
 sudo apt update
 sudo apt-get install -y nginx php-fpm git unzip
-1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
+var1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
 sudo tee /etc/nginx/sites-available/loadBalancer << EOF
 upstream loadbalancer {
         server 54.179.243.147:81 weight=3;
@@ -15,7 +15,7 @@ upstream loadbalancer {
 server {
 	listen 80;
 	#URL pengaksesan (bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu)
-	server_name \$1;
+	server_name $var1;
 
 	location / {
 	    proxy_pass http://loadbalancer;
