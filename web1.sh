@@ -13,7 +13,7 @@ sudo tee /etc/nginx/sites-available/web1 <<EOL
 server {
 	listen 81;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name $var1;
+	server_name \$var1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web;
 	
@@ -38,7 +38,7 @@ sudo tee /etc/nginx/sites-available/web2 <<EOL
 server {
 	listen 82;
 	#bisa diganti dengan ip address localhostmu atau ip servermu, nanti kalau sudah ada domain diganti nama domainmu
-	server_name $var1;
+	server_name \$var1;
 	#root adalah tempat dmn codingannya di masukkan index.html dll.
 	root /var/www/web;
 	

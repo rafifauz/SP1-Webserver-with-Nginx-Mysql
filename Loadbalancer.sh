@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#Server1= 54.254.36.186 (Nginx >> LoadBalancer & Webserver )
-#Server2= 13.250.7.158 (Nginx >> Webserver)
-#Server3= 54.179.243.147	(Mysql >> Database)
+#Server1= 54.254.36.186 (Nginx >> LoadBalancer)
+#Server2= 54.179.243.147: (Nginx >> webserver port:81 & webserver port:82)
+#Server3= 	(Mysql >> Database)
 sudo apt update
 sudo apt-get install -y nginx php-fpm git unzip
 var1=$(dig +short myip.opendns.com @resolver1.opendns.com)#public IP
